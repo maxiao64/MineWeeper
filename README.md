@@ -9,3 +9,7 @@ They are the number of rows, the number of columns and the number of bombs
 ```
 php start.php
 ```
+
+## review
+![review_image](https://github.com/maxiao64/MineWeeper/raw/master/review.jpg)
+
