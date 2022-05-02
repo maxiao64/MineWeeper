@@ -11,5 +11,5 @@ php start.php
 ```
 
 ## review
-![review_image](https://github.com/maxiao64/MineWeeper/raw/master/review.jpg)
+![review_image](https://gitee.com/mathoss/mine-weeper/raw/master/review.jpg)
 
