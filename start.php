@@ -3,7 +3,7 @@ include_once "MineWeeper.php";
 include_once "Point.php";
 include_once "Reader.php";
 
-
+error_reporting(E_ERROR | E_WARNING | E_PARSE| E_NOTICE);
 $board = new MineWeeper(10, 5, 10);
 echo $board->getOperationInstructions() . PHP_EOL;
 $board->display();

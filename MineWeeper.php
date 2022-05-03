@@ -166,7 +166,11 @@ class MineWeeper
      */
     public function click($x, $y, $type)
     {
-        $point = $this->board[$x][$y];
+        $point = $this->board[$x][$y] ?? false;
+        if (!$point) {
+            echo "未找到坐标点\n";
+            return;
+        }
         switch ($type) {
             case 'o':
                 $this->clickForOpen($point);
@@ -218,7 +222,7 @@ class MineWeeper
             while ($pointPosition = array_shift($checkPoint)) {
                 $x     = $pointPosition[0];
                 $y     = $pointPosition[1];
-                $point = $this->board[$x][$y];
+                $point = $this->board[$x][$y] ?? false;
                 if (!$point) {
                     continue;
                 }
