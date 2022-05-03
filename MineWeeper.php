@@ -62,7 +62,7 @@ class MineWeeper
     {
         $mineIndexList = [];
         for ($i = 0; $i < $this->mineNum; $i++) {
-            $index = random_int(0, $this->rowNum * $this->columnNum);
+            $index = random_int(0, $this->rowNum * $this->columnNum - 1);
             if (in_array($index, $mineIndexList)) {
                 $i--;
                 continue;
@@ -70,11 +70,9 @@ class MineWeeper
             $mineIndexList[] = $index;
         }
 
-        for ($i = 0; $i < $this->mineNum; $i++) {
-            $index = $mineIndexList[$i];
-            $x     = floor($index / $this->rowNum);
-            $x     = $x > 0 ? $x : 0;
-            $y     = $index % $this->rowNum;
+        foreach ($mineIndexList as $index) {
+            $x     = floor($index / $this->columnNum);
+            $y     = $index % $this->columnNum;
 
             $point         = $this->board[$x][$y];
             $point->isMine = true;
@@ -104,10 +102,14 @@ class MineWeeper
                     [$x + 1, $y + 1]
                 ];
                 foreach ($checkPointList as $item) {
-                    $point = $this->board[$item[0]][$item[1]];
-                    if (!$point) {
+                    if ($item[0] < 0 || $item[0] >= $this->rowNum) {
                         continue;
                     }
+                    if ($item[1] < 0 || $item[1] >= $this->columnNum) {
+                        continue;
+                    }
+
+                    $point = $this->board[$item[0]][$item[1]];
                     if ($point->isMine) {
                         $totalMine++;
                     }
